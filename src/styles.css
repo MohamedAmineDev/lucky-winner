@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*** my global css classes ***/
+.nav-link{
+    @apply font-bold py-1 px-3 text-slate-200 rounded-lg bg-slate-900 hover:text-blue-300 hover:bg-gray-500;
+}
+.my-navbar{
+    @apply flex justify-start space-x-4 bg-slate-800 py-3;
+}
+.cards{
+    @apply grid grid-cols-1 md:grid-cols-3;
+}
+.card{
+    @apply bg-slate-50 p-6 m-3 rounded text-center shadow-md overflow-hidden;
+}
+.card-image{
+    @apply w-full  object-cover border-0;
+}
+.card-description{
+    @apply text-black font-bold;
+}
+.display-btn{
+    @apply bg-blue-600 rounded-full p-2 text-white border border-blue-600 border-solid hover:bg-white hover:text-blue-600;
+}
+.forms-global-container{
+    @apply min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8;
+}
+.forms-container{
+    @apply max-w-md w-full space-y-8;
+}
+.form-title{
+    @apply mt-6 text-center text-3xl font-extrabold text-gray-900 ;
+}
+.simple-form{
+    @apply mt-8 space-y-6;
+}
+.input-groups{
+    @apply rounded-md shadow-sm -space-y-px;
+}
+.label-form{
+    @apply  underline text-gray-800 font-bold;
+}
+.input-form{
+    @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm my-3;
+}
+.input-error{
+    @apply bg-red-600 text-red-100 py-3 px-3 font-bold;
+}
+.submit-form{
+    @apply relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
+.modal-golobal-container{
+    @apply  z-10 fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity;
+}
+.modal-container{
+    @apply flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0;
+}
