@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="forms-global-container">
+    <div class="forms-container">
+        <h2 class="form-title">Login</h2>
+        <form class="simple-form" (ngSubmit)="addUser()" method="POST">
+            <div class="input-groups">
+                <div>
+                    <label for="email" class="label-form">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="input-form"
+                        placeholder="Email" [(ngModel)]="form.email" #email="ngModel">
+                    <div *ngIf="emailIsNotValid(email)" class="input-error">
+                        <p>The email is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="label-form">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="password" required
+                        class="input-form" placeholder="Password" [(ngModel)]="form.password" #password="ngModel">
+                    <div *ngIf="passwordIsNotValid(password)" class="input-error">
+                        <p>The password is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-center text-blue-900 hover:text-blue-800 hover:underline">You dont have an account ?
+                    </p>
+                </div>
+            </div>
+            <!--Second part of the form-->
+            <div>
+                <button type="submit" [disabled]="isNotValide(email,password)" class="submit-form">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
