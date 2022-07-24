@@ -63,6 +63,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "options": {
+              "browserTarget": "lucky-winner:build",
+              "proxyConfig": "src/proxy.conf.json"
+            },
             "production": {
               "browserTarget": "lucky-winner:build:production"
             },

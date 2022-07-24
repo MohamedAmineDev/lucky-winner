@@ -1,0 +1,10 @@
+<section>
+    <h1 class="text-black text-center font-extrabold text-4xl mt-5 underline">Here is our game list</h1>
+</section>
+<section class="cards">
+    <ng-container *ngIf="games">
+        <ng-container *ngFor="let game of games">
+            <app-game [game]="game"></app-game>
+        </ng-container>
+    </ng-container>
+</section>

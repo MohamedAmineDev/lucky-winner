@@ -4,6 +4,7 @@
         <a routerLink="/" class="nav-link">Home</a>
         <a routerLink="/contact" class="nav-link">Contact</a>
         <a routerLink="/about_us" class="nav-link">About us</a>
+        <a routerLink="/games" class="nav-link">Games</a>
     </div>
     <div class="">
         <a routerLink="/login" class="nav-link">Sign in</a>
@@ -12,23 +13,23 @@
     </div>
 </div>
 <div class="my-navbar-small-screens">
-    <button class="nav-link" (click)="displayOptions()" (blur)="hideOptions()">Lucky Winner</button>
+    <button class="nav-link" (click)="displayOptions()">Lucky Winner</button>
     <ng-container *ngIf="isdisPlayed==true">
         <div class="nav-links-container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
-            tabindex="-1" (toggle)="hideOptions()">
+            tabindex="-1">
             <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-0">Home</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1"
-                    id="menu-item-1">Contact</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">About
+                <a routerLink="/" class="nav-link-small-screens" (click)="hideOptions()">Home</a>
+                <a routerLink="" class="nav-link-small-screens" id="menu-item-1" (click)="hideOptions()">Contact</a>
+                <a routerLink="" class="nav-link-small-screens">About
                     us</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">Sign
+                <a routerLink="/games" class="nav-link-small-screens" id="menu-item-2" (click)="hideOptions()">Games</a>
+                <a routerLink="" class="nav-link-small-screens" (click)="hideOptions()">Sign
                     in</a>
-                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
+                <button class="nav-link-small-screens" (click)="hideOptions()">
                     Logout
                 </button>
-                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
+                <button class="nav-link-small-screens" (click)="hideOptions()">
                     Mohamed Amine
                 </button>
                 <!--  <form method="POST" action="#" role="none">
