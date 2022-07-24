@@ -6,8 +6,17 @@
 .nav-link{
     @apply font-bold py-1 px-3 text-slate-200 rounded-lg bg-slate-900 hover:text-blue-300 hover:bg-gray-500;
 }
-.my-navbar{
-    @apply flex justify-start space-x-4 bg-slate-800 py-3;
+.nav-link-small-screens{
+    @apply text-gray-700 block px-4 py-2 text-sm;
+}
+.nav-links-container{
+    @apply absolute mt-6 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none;
+}
+.my-navbar-larger-screens{
+    @apply  w-full hidden md:flex md:justify-between  md:space-x-4 md:bg-slate-800 md:py-3 ;
+}
+.my-navbar-small-screens{
+    @apply flex justify-start md:hidden space-x-4 bg-slate-800 py-3 ;
 }
 .cards{
     @apply grid grid-cols-1 md:grid-cols-3;

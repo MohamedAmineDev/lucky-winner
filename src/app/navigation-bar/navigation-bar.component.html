@@ -1,0 +1,42 @@
+<div class="my-navbar-larger-screens">
+    <div class="">
+        <button class="nav-link">Lucky Winner</button>
+        <a routerLink="/" class="nav-link">Home</a>
+        <a routerLink="/contact" class="nav-link">Contact</a>
+        <a routerLink="/about_us" class="nav-link">About us</a>
+    </div>
+    <div class="">
+        <a routerLink="/login" class="nav-link">Sign in</a>
+        <button class="nav-link">Mohamed Amine</button>
+        <button class="nav-link">Logout</button>
+    </div>
+</div>
+<div class="my-navbar-small-screens">
+    <button class="nav-link" (click)="displayOptions()" (blur)="hideOptions()">Lucky Winner</button>
+    <ng-container *ngIf="isdisPlayed==true">
+        <div class="nav-links-container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
+            tabindex="-1" (toggle)="hideOptions()">
+            <div class="py-1" role="none">
+                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-0">Home</a>
+                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1"
+                    id="menu-item-1">Contact</a>
+                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">About
+                    us</a>
+                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">Sign
+                    in</a>
+                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
+                    Logout
+                </button>
+                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
+                    Mohamed Amine
+                </button>
+                <!--  <form method="POST" action="#" role="none">
+                    <button type="submit" class="text-gray-700 block w-full text-left px-4 py-2 text-sm" role="menuitem"
+                        tabindex="-1" id="menu-item-3">Sign out</button>
+                </form>
+                -->
+            </div>
+        </div>
+    </ng-container>
+</div>
