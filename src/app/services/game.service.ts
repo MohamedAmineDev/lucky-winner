@@ -27,6 +27,6 @@ export class GameService {
     return this.games;
   }
   getAll(): Observable<Array<Game>> {
-    return this.http.get<Array<Game>>("http://localhost:8090/app/api/manage_game/games");
+    return this.http.get<Array<Game>>("http://localhost:8080/app/api/manage_game/games");
   }
 }

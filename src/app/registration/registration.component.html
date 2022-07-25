@@ -1,0 +1,65 @@
+<div class="forms-global-container">
+    <div class="forms-container">
+        <h2 class="form-title">Registration</h2>
+        <form class="simple-form" (ngSubmit)="addUser()" method="POST">
+            <div class="input-groups">
+                <div>
+                    <label for="username" class="label-form">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required class="input-form"
+                        placeholder="Username" [(ngModel)]="form.username" #username="ngModel">
+                    <div *ngIf="usernameIsNotValide(username)" class="input-error">
+                        <p>A username is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="label-form">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="input-form"
+                        placeholder="Email" [(ngModel)]="form.email" #email="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <div *ngIf="emailIsNotValid(email)" class="input-error">
+                        <p>A valid email is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="address" class="label-form">Address</label>
+                    <input id="address" name="address" type="text" autocomplete="address" required class="input-form"
+                        placeholder="Address" [(ngModel)]="form.address" #address="ngModel">
+                    <div *ngIf="addressIsNotValide(address)" class="input-error">
+                        <p>A valid email is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="label-form">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="password" required
+                        class="input-form" placeholder="Password" [(ngModel)]="form.password" #password="ngModel"
+                        minlength="6">
+                    <div *ngIf="passwordIsNotValid(password)" class="input-error">
+                        <p>A password width at least 6 characters is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="confirm_password" class="label-form">Confirm password</label>
+                    <input id="confirm_password" name="confirm_password" type="password" autocomplete="password"
+                        required class="input-form" placeholder="Put the same password"
+                        [(ngModel)]="form.confirmPassword" #confirmPassword="ngModel" minlength="6">
+                    <div *ngIf="confirmPasswordIsNotValid(confirmPassword)" class="input-error">
+                        <p>The same password is required !!!!</p>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a class="text-blue-900 hover:text-blue-800 hover:underline" routerLink="/login">You
+                        have already an account ?
+                    </a>
+
+                </div>
+            </div>
+            <!--Second part of the form-->
+            <div>
+                <button type="submit" 
+                    class="submit-form">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

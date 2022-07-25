@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
     console.log(this.form.email + "|" + this.form.password);
     let user = new User(this.form.email, this.form.password);
     console.log(user);
-    this.router.navigate(['/']);
+    this.userService.login(user).subscribe(data=>{
+      console.log(data);
+    });
+    //this.router.navigate(['/']);
     //this.userService.saveData(this.form.email, this.form.password);
     //this.userService.loadData();
   }
@@ -38,10 +41,10 @@ export class LoginComponent implements OnInit {
       && (name.dirty == true ||
         name.touched == true));
   }
-  passwordIsNotValid(price: any): boolean {
+  passwordIsNotValid(password: any): boolean {
     return (
-      price.invalid == true
-      && (price.dirty == true
-        || price.touched == true));
+      password.invalid == true
+      && (password.dirty == true
+        || password.touched == true));
   }
 }

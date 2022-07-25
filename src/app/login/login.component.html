@@ -6,22 +6,29 @@
                 <div>
                     <label for="email" class="label-form">Email</label>
                     <input id="email" name="email" type="email" autocomplete="email" required class="input-form"
-                        placeholder="Email" [(ngModel)]="form.email" #email="ngModel">
+                        placeholder="Email" [(ngModel)]="form.email" #email="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     <div *ngIf="emailIsNotValid(email)" class="input-error">
-                        <p>The email is required !!!!</p>
+                        <p>A valid email is required !!!!</p>
                     </div>
                 </div>
                 <div>
                     <label for="password" class="label-form">Password</label>
                     <input id="password" name="password" type="password" autocomplete="password" required
-                        class="input-form" placeholder="Password" [(ngModel)]="form.password" #password="ngModel">
+                        class="input-form" placeholder="Password" [(ngModel)]="form.password" #password="ngModel"
+                        minlength="6">
                     <div *ngIf="passwordIsNotValid(password)" class="input-error">
-                        <p>The password is required !!!!</p>
+                        <p>A password width at least 6 characters is required !!!!</p>
                     </div>
                 </div>
-                <div>
-                    <p class="text-center text-blue-900 hover:text-blue-800 hover:underline">You dont have an account ?
-                    </p>
+                <div class="flex justify-between mt-6">
+                    <a class="text-blue-900 hover:text-blue-800 hover:underline" routerLink="/registration">You dont
+                        have an account ?
+                    </a>
+                    <a class="text-orange-700 hover:text-orange-600 hover:underline" routerLink="/registration">Forgot
+                        your
+                        password ?
+                    </a>
                 </div>
             </div>
             <!--Second part of the form-->
