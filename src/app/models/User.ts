@@ -17,12 +17,15 @@ export class User {
         this.password = password;
     }
 }
-export class Player extends User {
+export class Player {
     username: string;
+    password: string;
+    email: string;
     address: string;
-    constructor(username: string, email: string, address: string, password: string) {
-        super(email, password);
+    constructor(username: string, password: string, email: string, address: string) {
         this.username = username;
+        this.password = password;
+        this.email = email;
         this.address = address;
     }
 }

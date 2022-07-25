@@ -6,12 +6,20 @@
         <a routerLink="/about_us" class="nav-link">About us</a>
         <a routerLink="/games" class="nav-link">Games</a>
     </div>
-    <div class="">
-        <a routerLink="/login" class="nav-link">Login</a>
-        <button class="nav-link">Mohamed Amine</button>
-        <button class="nav-link">Logout</button>
-        <a routerLink="/registration" class="nav-link">Registration</a>
-    </div>
+    <ng-container *ngIf="loggedIn==true">
+        <div class="">
+            <button class="nav-link">Mohamed Amine</button>
+            <button class="nav-link" (click)="logout()">Logout</button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loggedIn==false">
+        <div class="mt-1">
+            <a routerLink="/login" class="nav-link ">Login</a>
+            <a routerLink="/registration" class="nav-link">Registration</a>
+        </div>
+
+    </ng-container>
+
 </div>
 <div class="my-navbar-small-screens">
     <button class="nav-link" (click)="displayOptions()">Lucky Winner</button>

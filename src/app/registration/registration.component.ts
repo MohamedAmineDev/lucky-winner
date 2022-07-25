@@ -31,7 +31,15 @@ export class RegistrationComponent implements OnInit {
       .subscribe(e => {
         console.log(e);
       });*/
-    this.userService.registerPlayer(new Player("hmed", "hmed@gmail.com", "t", "ttt"));
+    const username = this.form.username;
+    const password = this.form.password;
+    const email = this.form.email;
+    const address = this.form.address;
+    let p: Player = new Player(username, password, email, address);
+    let res: boolean = this.userService.registerPlayer(p);
+    if (res) {
+      this.router.navigate(["/"]);
+    }
     //this.userService.saveData(this.form.email, this.form.password);
     //this.userService.loadData();
   }

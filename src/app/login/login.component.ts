@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   cch: any = "";
   username: string;
   pas: string;
+  alertIsDisplayed: boolean = false;
   constructor(private userService: AuthService, private router: Router) {
     this.username = userService.username;
     this.pas = userService.password;
@@ -23,13 +24,18 @@ export class LoginComponent implements OnInit {
   addUser() {
     console.log(this.form.email + "|" + this.form.password);
     let user = new User(this.form.email, this.form.password);
-    console.log(user);
-    this.userService.login(user).subscribe(data=>{
-      console.log(data);
+    //console.log(user);
+    this.userService.login(user).subscribe(data => {
+      if (data == true) {
+        this.userService.saveData(user.email, user.password);
+        this.userService.isAuthentified = true;
+        this.router.navigate(['/']);
+        window.location.reload();
+      }
+    }, (e) => {
+      //alert("Error !!!");
+      this.alertIsDisplayed = true;
     });
-    //this.router.navigate(['/']);
-    //this.userService.saveData(this.form.email, this.form.password);
-    //this.userService.loadData();
   }
   isNotValide(email: any, password: any): boolean {
     //console.log(name,price);
@@ -46,5 +52,8 @@ export class LoginComponent implements OnInit {
       password.invalid == true
       && (password.dirty == true
         || password.touched == true));
+  }
+  closeAlert() {
+    this.alertIsDisplayed = false;
   }
 }
