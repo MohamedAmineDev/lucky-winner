@@ -25,16 +25,11 @@ export class LoginComponent implements OnInit {
     console.log(this.form.email + "|" + this.form.password);
     let user = new User(this.form.email, this.form.password);
     //console.log(user);
-    this.userService.login(user).subscribe(data => {
-      if (data == true) {
-        this.userService.saveData(user.email, user.password);
-        this.userService.isAuthentified = true;
-        this.router.navigate(['/']);
-        window.location.reload();
-      }
-    }, (e) => {
-      //alert("Error !!!");
-      this.alertIsDisplayed = true;
+    this.userService.fetchUsername(user).subscribe(data => {
+      this.userService.saveData(data.username, user.email, user.password);
+      this.userService.isAuthentified = true;
+      window.location.href = "/";
+      //this.router.navigate(['/']);
     });
   }
   isNotValide(email: any, password: any): boolean {

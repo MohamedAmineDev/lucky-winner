@@ -7,13 +7,15 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AuthService {
   username: string;
+  email: string;
   password: string;
   isAuthentified: boolean = false;
   constructor(private http: HttpClient) {
     this.username = "";
     this.password = "";
+    this.email = "";
     this.loadData();
-    if (this.username != "" && this.password != "") {
+    if (this.username != "" && this.password != "" && this.email != "") {
       this.isAuthentified = true;
     }
   }
@@ -30,8 +32,16 @@ export class AuthService {
     });
     return false;
   }
+  fetchUsername(user: User) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(user.email + ':' + user.password)
+      })
+    };
+    return this.http.get<Player>("http://localhost:8080/app/api/manage_user/user/username/" + user.email, httpOptions);
+  }
   login(user: User) {
-    const header = new HttpHeaders({ 'username': user.email, 'password': user.password });
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -50,9 +60,9 @@ export class AuthService {
     }
     return result;
   }
-  saveData(username: string, password: string) {
+  saveData(username: string, email: string, password: string) {
     let random = this.makeid(20);
-    let u = username + "|" + password;
+    let u = email + "|" + username + "|" + password;
     let crypted = random + CryptoJS.AES.encrypt(u, random).toString();
     localStorage.setItem('data', crypted);
     console.log(crypted);
@@ -65,9 +75,10 @@ export class AuthService {
     let decrypted: string = CryptoJS.AES.decrypt(token.slice(20, token.length), random).toString(CryptoJS.enc.Utf8);
     console.log(decrypted);
     let sp = decrypted.split('|');
-    console.log(sp[0], sp[1]);
-    this.username = sp[0];
-    this.password = sp[1];
+    //console.log(sp[0], sp[1]);
+    this.email = sp[0];
+    this.username = sp[1];
+    this.password = sp[2];
   }
   logout() {
     localStorage.removeItem('data');

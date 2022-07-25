@@ -10,10 +10,12 @@ import { AuthService } from '../services/auth.service';
 export class NavigationBarComponent implements OnInit {
   isdisPlayed: boolean = false;
   loggedIn: boolean = false;
+  username: string = "";
   constructor(private userService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loggedIn = this.userService.isAuthentified;
+    this.username = this.userService.username;
     console.log(this.loggedIn);
   }
   displayOptions() {
@@ -29,8 +31,7 @@ export class NavigationBarComponent implements OnInit {
   }
   logout() {
     this.userService.logout();
-    this.router.navigate(['/']);
-    window.location.reload();
+    window.location.href = "/login";
   }
 
 }
