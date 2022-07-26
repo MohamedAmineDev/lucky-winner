@@ -1,0 +1,15 @@
+<div class="game">
+
+    <div class="">
+        <ngx-wheel id="gameArea" [width]='width' [height]='heigth' [spinDuration]='spinDuration'
+            [disableSpinOnClick]='true' [items]='items' [innerRadius]='innerRadius' [spinAmount]='spinAmount'
+            [textOrientation]='textOrientation' [textAlignment]='textAlignment' pointerStrokeColor='red'
+            pointerFillColor='purple' [idToLandOn]='idToLandOn' (onSpinStart)='before()' (onSpinComplete)='after()'>
+        </ngx-wheel>
+    </div>
+    <div
+        class="mt-5 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-600 text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:ml-3 sm:w-auto sm:text-sm">
+        <button (click)="wheel.spin()" [disabled]="isPlayable">Spin</button>
+
+    </div>
+</div>

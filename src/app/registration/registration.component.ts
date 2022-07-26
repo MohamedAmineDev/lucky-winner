@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
     const password = this.form.password;
     const email = this.form.email;
     const address = this.form.address;
-    let p: Player = new Player(username, password, email, address);
+    let p: Player = new Player(0, username, password, email, address);
     let res: boolean = this.userService.registerPlayer(p);
     if (res) {
       this.router.navigate(["/"]);

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     let user = new User(this.form.email, this.form.password);
     //console.log(user);
     this.userService.fetchUsername(user).subscribe(data => {
-      this.userService.saveData(data.username, user.email, user.password);
+      this.userService.saveData(data.id,data.username, user.email, user.password);
       this.userService.isAuthentified = true;
       window.location.href = "/";
       //this.router.navigate(['/']);

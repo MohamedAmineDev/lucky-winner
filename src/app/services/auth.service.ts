@@ -6,6 +6,7 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class AuthService {
+  id: number = 0;
   username: string;
   email: string;
   password: string;
@@ -15,7 +16,7 @@ export class AuthService {
     this.password = "";
     this.email = "";
     this.loadData();
-    if (this.username != "" && this.password != "" && this.email != "") {
+    if (this.username != "" && this.password != "" && this.email != "" && this.id > 0) {
       this.isAuthentified = true;
     }
   }
@@ -60,9 +61,9 @@ export class AuthService {
     }
     return result;
   }
-  saveData(username: string, email: string, password: string) {
+  saveData(id: number, username: string, email: string, password: string) {
     let random = this.makeid(20);
-    let u = email + "|" + username + "|" + password;
+    let u = id + "|" + email + "|" + username + "|" + password;
     let crypted = random + CryptoJS.AES.encrypt(u, random).toString();
     localStorage.setItem('data', crypted);
     console.log(crypted);
@@ -76,9 +77,10 @@ export class AuthService {
     console.log(decrypted);
     let sp = decrypted.split('|');
     //console.log(sp[0], sp[1]);
-    this.email = sp[0];
-    this.username = sp[1];
-    this.password = sp[2];
+    this.id = parseInt(sp[0]);
+    this.email = sp[1];
+    this.username = sp[2];
+    this.password = sp[3];
   }
   logout() {
     localStorage.removeItem('data');
