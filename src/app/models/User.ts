@@ -9,6 +9,11 @@ export interface RegisterUser {
     confirmPassword: string;
     address: string;
 }
+export interface ChangePasswordForm {
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
 export class User {
     email: string;
     password: string;

@@ -14,6 +14,10 @@ export class RegistrationComponent implements OnInit {
   cch: any = "";
   username: string;
   pas: string;
+
+  alertIsDisplayed: boolean = false;
+  buttonText: string = "Register";
+  registred: boolean = false;
   constructor(private userService: AuthService, private router: Router) {
     this.username = userService.username;
     this.pas = userService.password;
@@ -22,24 +26,23 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
   addUser() {
-    /*console.log(this.form.email + "|" + this.form.password);
-    let user = new User(this.form.email, this.form.password);
-    console.log(user);
-    this.router.navigate(['/']);*/
-    console.log(this.form);
-    /*this.userService.registerPlayer(new Player(this.form.username, this.form.email, this.form.address, this.form.password))
-      .subscribe(e => {
-        console.log(e);
-      });*/
+    this.buttonText = "Loading...";
     const username = this.form.username;
     const password = this.form.password;
     const email = this.form.email;
     const address = this.form.address;
     let p: Player = new Player(0, username, password, email, address);
-    let res: boolean = this.userService.registerPlayer(p);
-    if (res) {
-      this.router.navigate(["/"]);
-    }
+    this.userService.registerPlayer(p).subscribe((data) => {
+      if (data) {
+        this.alertIsDisplayed = true;
+        this.registred = true;
+      }
+    }, (e) => {
+      this.registred = false;
+      this.alertIsDisplayed = true;
+      this.buttonText = "Register";
+    });
+    //this.router.navigate(["/"]);
     //this.userService.saveData(this.form.email, this.form.password);
     //this.userService.loadData();
   }
@@ -77,5 +80,10 @@ export class RegistrationComponent implements OnInit {
       && (confimrPassword.dirty == true
         || confimrPassword.touched == true));
   }
-
+  closeAlert() {
+    this.alertIsDisplayed = false;
+    if (this.registred) {
+      this.router.navigate(["/login"]);
+    }
+  }
 }

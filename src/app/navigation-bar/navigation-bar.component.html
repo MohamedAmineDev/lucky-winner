@@ -1,6 +1,6 @@
 <div class="my-navbar-larger-screens">
     <div class="">
-        <button class="nav-link">Lucky Winner</button>
+        <button class="nav-link"><span class="mr-1"><i class="fa-solid fa-earth-africa"></i></span>Lucky Winner</button>
         <a routerLink="/" class="nav-link"><span class="mr-1"><i class="fa-solid fa-house"></i></span>Home</a>
         <a routerLink="/contact" class="nav-link"><span class="mr-1"><i class="fa-solid fa-phone"></i></span>Contact</a>
         <a routerLink="/about_us" class="nav-link"><span class="mr-1"><i
@@ -26,7 +26,9 @@
 
 </div>
 <div class="my-navbar-small-screens">
-    <button class="nav-link" (click)="displayOptions()">Lucky Winner</button>
+    <button class="nav-link" (click)="displayOptions()"><span class="mr-1"><i
+                class="fa-solid fa-earth-africa"></i></span>Lucky
+        Winner</button>
     <ng-container *ngIf="isdisPlayed==true">
         <div class="nav-links-container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
             tabindex="-1">

@@ -13,6 +13,8 @@ import { WinwheelgameComponent } from './winwheelgame/winwheelgame.component';
 import { GameSelectionComponent } from './game-selection/game-selection.component';
 import { NgxWheelModule } from 'ngx-wheel';
 import { WheelComponent } from './wheel/wheel.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { WheelComponent } from './wheel/wheel.component';
     RegistrationComponent,
     WinwheelgameComponent,
     GameSelectionComponent,
-    WheelComponent
+    WheelComponent,
+    ChangePasswordComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
