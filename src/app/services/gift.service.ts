@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Selection } from '../models/Selection';
+import { Gift } from '../models/Gift';
 @Injectable({
   providedIn: 'root'
 })
-export class SelectionService {
+export class GiftService {
 
   constructor(private http: HttpClient) { }
-  getSelection(gameId: number, email: string, password: string) {
-    const url = `http://localhost:8080/app/api/manage_selection/selection/game/${gameId}`;
+  getGifts(selectionId: number, email: string, password: string) {
+    const url = `http://localhost:8080/app/api/manage_gift/user/selection/gifts/${selectionId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(email + ':' + password)
       })
     };
-    return this.http.get<Selection>(url, httpOptions);
+    return this.http.get<Gift[]>(url, httpOptions);
   }
 }
