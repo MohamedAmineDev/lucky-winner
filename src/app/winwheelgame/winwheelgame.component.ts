@@ -32,6 +32,10 @@ export class WinwheelgameComponent implements OnInit {
   isPlayable: boolean = true;
   lostId: number = 0;
   gifts: Gift[] = {} as Gift[];
+  winningMessage: string = "";
+  title: string = "";
+  winner: boolean = false;
+  displayOnWinning: boolean = false;
   constructor(private essaiService: EssaiService, private userService: AuthService, private activetedRouter: ActivatedRoute, private selectionService: SelectionService, private giftService: GiftService) {
     this.gameId = this.activetedRouter.snapshot.params["id"];
     essaiService.alreadyPlayed(userService.id, userService.email, userService.password, this.gameId).subscribe(data => {
@@ -39,23 +43,9 @@ export class WinwheelgameComponent implements OnInit {
       this.isPlayable = data;
     });
     this.loadData();
-    /*this.items.push({ id: 1, text: 'Prize 1', fillStyle: 'red' });
-    this.items.push({ id: 2, text: 'Prize 2', fillStyle: 'blue' });
-    this.items.push({ id: 3, text: 'Prize 3', fillStyle: 'green' });
-    this.items.push({ id: 4, text: 'Prize 4', fillStyle: 'orange' });
-    this.items.push({ id: 5, text: 'Prize 5', fillStyle: 'crimson' });
-    this.items.push({ id: 6, text: 'Prize 6', fillStyle: 'skyblue' });
-    this.items.push({ id: 7, text: 'Prize 7', fillStyle: 'blue' });*/
-
-    //this.idToLandOn = this.items[Math.random() * this.items.length].id;
-    //alert(this.items.length);
-
   }
 
   ngOnInit(): void {
-    //console.log(this.selection);
-    //this.displayWheel();
-    console.log(this.items);
   }
 
   ngAfterViewInit() {
@@ -83,19 +73,22 @@ export class WinwheelgameComponent implements OnInit {
     let essai: any = null;
     if (this.lostId == this.idToLandOn) {
       essai = new Essai("Lost", 0);
-      alert("You lost better luck next time");
+      this.title = "Opps"
+      this.winningMessage = "You lost better luck next time !!!!";
     }
     else {
       essai = new Essai("Winner", this.idToLandOn);
       let j = 0;
       this.items.forEach(i => {
         if (i.id == this.idToLandOn) {
-          alert("You won  " + this.gifts[j].nom);
-
+          this.title = "Congratulations";
+          this.winningMessage = `You won ${this.gifts[j].nom}`;
+          this.winner = true;
         }
         j++;
       });
     }
+    this.displayOnWinning = true;
 
     this.essaiService.saveResult(this.userService.id, this.userService.email, this.userService.password, essai, this.gameId)
       .subscribe(data => {
@@ -146,6 +139,9 @@ export class WinwheelgameComponent implements OnInit {
 
       });
 
+  }
+  close() {
+    this.displayOnWinning = false;
   }
 
 }
