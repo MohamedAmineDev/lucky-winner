@@ -62,7 +62,7 @@
         },
         "serve": {
           "options": {
-            "port": 8081
+            "port": 8082
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {

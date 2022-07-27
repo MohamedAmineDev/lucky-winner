@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
   addUser() {
     this.buttonText = "Loading...";
-    console.log(this.form.email + "|" + this.form.password);
+    //console.log(this.form.email + "|" + this.form.password);
     let user = new User(this.form.email, this.form.password);
     //console.log(user);
     this.userService.fetchUsername(user).subscribe(data => {

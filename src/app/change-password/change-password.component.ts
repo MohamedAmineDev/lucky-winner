@@ -42,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
     this.buttonText = "Loading...";
     let user = new User(this.form.email, this.form.password);
     this.userService.changePassword(user).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       window.location.href = "/";
 
     }, (e) => {

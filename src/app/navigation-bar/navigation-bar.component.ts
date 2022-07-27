@@ -16,7 +16,7 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.loggedIn = this.userService.isAuthentified;
     this.username = this.userService.username;
-    console.log(this.loggedIn);
+    //console.log(this.loggedIn);
   }
   displayOptions() {
     if (this.isdisPlayed) {

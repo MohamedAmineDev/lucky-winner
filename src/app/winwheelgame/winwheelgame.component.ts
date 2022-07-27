@@ -36,10 +36,11 @@ export class WinwheelgameComponent implements OnInit {
   title: string = "";
   winner: boolean = false;
   displayOnWinning: boolean = false;
+  displayError: boolean = false;
   constructor(private essaiService: EssaiService, private userService: AuthService, private activetedRouter: ActivatedRoute, private selectionService: SelectionService, private giftService: GiftService) {
     this.gameId = this.activetedRouter.snapshot.params["id"];
     essaiService.alreadyPlayed(userService.id, userService.email, userService.password, this.gameId).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.isPlayable = data;
     });
     this.loadData();
@@ -49,7 +50,7 @@ export class WinwheelgameComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('only after THIS EVENT "wheel" is usable!!');
+    //console.log('only after THIS EVENT "wheel" is usable!!');
     // Call the spin function whenever and wherever you want after the AfterViewInit Event
     //this.wheel.spin();
   }
@@ -66,10 +67,6 @@ export class WinwheelgameComponent implements OnInit {
     //this.wheel.reset();
   }
   after() {
-    // this.reset();
-    // let index = this.items.indexOf({ id: this.idToLandOn, text: '', fillStyle: "" });
-    alert("Lost id=" + this.lostId);
-    alert("Winid=" + this.idToLandOn);
     let essai: any = null;
     if (this.lostId == this.idToLandOn) {
       essai = new Essai("Lost", 0);
@@ -115,7 +112,7 @@ export class WinwheelgameComponent implements OnInit {
     let selection: Selection;
     this.selectionService.getSelection(this.gameId, this.userService.email, this.userService.password)
       .subscribe(data => {
-        console.log(data);
+        //console.log(data);
         selection = data;
         this.giftService.getGifts(selection.id, this.userService.email, this.userService.password)
           .subscribe(gift => {
@@ -123,7 +120,7 @@ export class WinwheelgameComponent implements OnInit {
             this.items = [];
             this.gifts = gift;
             gift.forEach(g => {
-              console.log(g);
+              //console.log(g);
               this.items.push({ id: j, text: `prize ${j}`, fillStyle: colors[i] });
               this.displayWheel();
               i++;
@@ -142,6 +139,12 @@ export class WinwheelgameComponent implements OnInit {
   }
   close() {
     this.displayOnWinning = false;
+  }
+  displayWarning() {
+    this.displayError = true;
+  }
+  closeWarning() {
+    this.displayError = false;
   }
 
 }

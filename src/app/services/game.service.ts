@@ -19,10 +19,10 @@ export class GameService {
     this.fetchGames().subscribe(e => {
       //console.log(e);
       this.games = e;
-      console.log(this.games);
-      console.log("response recived");
+      //console.log(this.games);
+      //console.log("response recived");
     }, (e) => {
-      console.log("error");
+      //console.log("error");
     });
     return this.games;
   }

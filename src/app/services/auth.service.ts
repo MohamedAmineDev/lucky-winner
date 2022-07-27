@@ -62,15 +62,15 @@ export class AuthService {
     let u = id + "|" + email + "|" + username + "|" + password;
     let crypted = random + CryptoJS.AES.encrypt(u, random).toString();
     localStorage.setItem('data', crypted);
-    console.log(crypted);
+    //console.log(crypted);
   }
   loadData() {
     let token: string = localStorage.getItem('data') + "";
-    console.log(token);
+    //console.log(token);
     let random = token.slice(0, 20);
-    console.log(random);
+    //console.log(random);
     let decrypted: string = CryptoJS.AES.decrypt(token.slice(20, token.length), random).toString(CryptoJS.enc.Utf8);
-    console.log(decrypted);
+    //console.log(decrypted);
     let sp = decrypted.split('|');
     //console.log(sp[0], sp[1]);
     this.id = parseInt(sp[0]);

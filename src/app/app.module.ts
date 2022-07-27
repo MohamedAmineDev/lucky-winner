@@ -12,9 +12,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { WinwheelgameComponent } from './winwheelgame/winwheelgame.component';
 import { GameSelectionComponent } from './game-selection/game-selection.component';
 import { NgxWheelModule } from 'ngx-wheel';
-import { WheelComponent } from './wheel/wheel.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +25,9 @@ import { MainComponent } from './main/main.component';
     RegistrationComponent,
     WinwheelgameComponent,
     GameSelectionComponent,
-    WheelComponent,
     ChangePasswordComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
