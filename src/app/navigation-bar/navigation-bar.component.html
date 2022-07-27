@@ -1,36 +1,65 @@
 <div class="my-navbar-larger-screens">
     <div class="">
-        <button class="nav-link">Lucky Winner</button>
-        <a routerLink="/" class="nav-link">Home</a>
-        <a routerLink="/contact" class="nav-link">Contact</a>
-        <a routerLink="/about_us" class="nav-link">About us</a>
+        <button class="nav-link"><span class="mr-1"><i class="fa-solid fa-earth-africa"></i></span>Lucky Winner</button>
+        <a routerLink="/" class="nav-link"><span class="mr-1"><i class="fa-solid fa-house"></i></span>Home</a>
+        <a href="mailto:globalnet@gnet.tn" title="globalnet@gnet.tn" class="nav-link"><span class="mr-1"><i
+                    class="fa-solid fa-phone"></i></span>Contact</a>
+        <a href="https://www.gnet.tn/qui-sommes-nous/" class="nav-link"><span class="mr-1"><i
+                    class="fa-regular fa-circle-question"></i></span>About us</a>
+        <a routerLink="/games" class="nav-link"><span class="mr-1"><i class="fa-solid fa-dice"></i></span>Games</a>
     </div>
-    <div class="">
-        <a routerLink="/login" class="nav-link">Sign in</a>
-        <button class="nav-link">Mohamed Amine</button>
-        <button class="nav-link">Logout</button>
-    </div>
+    <ng-container *ngIf="loggedIn==true">
+        <div class="">
+            <button class="nav-link"><span class="mr-1"><i class="fa-solid fa-user"></i></span>{{username}}</button>
+            <button class="nav-link" (click)="logout()"><span class="mr-1"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i></span>Logout</button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loggedIn==false">
+        <div class="mt-1">
+            <a routerLink="/login" class="nav-link "><span class="mr-1"><i
+                        class="fa-solid fa-arrow-right-to-bracket"></i></span>Login</a>
+            <a routerLink="/registration" class="nav-link"><span class="mr-1"><i
+                        class="fa-solid fa-address-card"></i></span>Registration</a>
+        </div>
+
+    </ng-container>
+
 </div>
 <div class="my-navbar-small-screens">
-    <button class="nav-link" (click)="displayOptions()" (blur)="hideOptions()">Lucky Winner</button>
+    <button class="nav-link" (click)="displayOptions()"><span class="mr-1"><i
+                class="fa-solid fa-earth-africa"></i></span>Lucky
+        Winner</button>
     <ng-container *ngIf="isdisPlayed==true">
         <div class="nav-links-container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
-            tabindex="-1" (toggle)="hideOptions()">
+            tabindex="-1">
             <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-0">Home</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1"
-                    id="menu-item-1">Contact</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">About
+                <a routerLink="/" class="nav-link-small-screens" (click)="hideOptions()"><span class="mr-1"><i
+                            class="fa-solid fa-house"></i></span>Home</a>
+                <a href="globalnet@gnet.tn" title="globalnet@gnet.tn" class="nav-link-small-screens" id="menu-item-1"
+                    (click)="hideOptions()"><span class="mr-1"><i class="fa-solid fa-phone"></i></span>Contact</a>
+                <a href="https://www.gnet.tn/qui-sommes-nous" class="nav-link-small-screens"><span class="mr-1"><i
+                            class="fa-regular fa-circle-question"></i></span>About
                     us</a>
-                <a routerLink="" class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">Sign
-                    in</a>
-                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
-                    Logout
-                </button>
-                <button class="nav-link-small-screens" role="menuitem" tabindex="-1" id="menu-item-2">
-                    Mohamed Amine
-                </button>
+                <a routerLink="/games" class="nav-link-small-screens" id="menu-item-2" (click)="hideOptions()"><span
+                        class="mr-1"><i class="fa-solid fa-dice"></i></span>Games</a>
+                <ng-container *ngIf="loggedIn==true">
+                    <button class="nav-link-small-screens" (click)="hideOptions()">
+                        <span class="mr-1"><i class="fa-solid fa-user"></i></span>{{username}}
+                    </button>
+                    <button class="nav-link-small-screens" (click)="hideOptions();logout()">
+                        <span class="mr-1"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>Logout
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="loggedIn==false">
+                    <a routerLink="/login" class="nav-link-small-screens" (click)="hideOptions()"><span class="mr-1"><i
+                                class="fa-solid fa-arrow-right-to-bracket"></i></span>Login</a>
+                    <a routerLink="/registration" class="nav-link-small-screens" (click)="hideOptions()"><span
+                            class="mr-1"><i class="fa-solid fa-address-card"></i></span>Registration</a>
+                </ng-container>
+
+
                 <!--  <form method="POST" action="#" role="none">
                     <button type="submit" class="text-gray-700 block w-full text-left px-4 py-2 text-sm" role="menuitem"
                         tabindex="-1" id="menu-item-3">Sign out</button>

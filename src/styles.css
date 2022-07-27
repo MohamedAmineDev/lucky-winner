@@ -16,7 +16,7 @@
     @apply  w-full hidden md:flex md:justify-between  md:space-x-4 md:bg-slate-800 md:py-3 ;
 }
 .my-navbar-small-screens{
-    @apply flex justify-start md:hidden space-x-4 bg-slate-800 py-3 ;
+    @apply flex justify-start md:hidden space-x-4 bg-slate-800 py-3 mb-24 ;
 }
 .cards{
     @apply grid grid-cols-1 md:grid-cols-3;
@@ -65,4 +65,19 @@
 }
 .modal-container{
     @apply flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0;
+}
+.game{
+    @apply flex flex-col justify-center items-center md:mt-6;
+}
+.main{
+    @apply mt-0 flex flex-col items-center absolute bg-opacity-90;
+   /* background-image: url("https://i.pinimg.com/originals/63/bf/0f/63bf0f5195646e5cd8ada16875de4b4b.png");*/
+   background-image: url("https://wallpaperaccess.com/full/1691713.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    scroll-behavior: smooth;
+}
+.footer{
+    @apply  w-full  flex justify-center   bg-slate-900 p-3 md:fixed bottom-0 mt-3;
 }

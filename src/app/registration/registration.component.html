@@ -1,0 +1,144 @@
+<div class="forms-global-container mb-5">
+    <div class="forms-container">
+        <h2 class="form-title">Registration</h2>
+        <form class="simple-form" (ngSubmit)="addUser()" method="POST">
+            <div class="input-groups">
+                <div>
+                    <label for="username" class="label-form">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required class="input-form"
+                        placeholder="Username" [(ngModel)]="form.username" #username="ngModel">
+                    <div *ngIf="usernameIsNotValide(username)" class="input-error">
+                        <p>A username is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="label-form">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="input-form"
+                        placeholder="Email" [(ngModel)]="form.email" #email="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <div *ngIf="emailIsNotValid(email)" class="input-error">
+                        <p>A valid email is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="address" class="label-form">Address</label>
+                    <input id="address" name="address" type="text" autocomplete="address" required class="input-form"
+                        placeholder="Address" [(ngModel)]="form.address" #address="ngModel">
+                    <div *ngIf="addressIsNotValide(address)" class="input-error">
+                        <p>A valid email is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="label-form">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="password" required
+                        class="input-form" placeholder="Password" [(ngModel)]="form.password" #password="ngModel"
+                        minlength="6">
+                    <div *ngIf="passwordIsNotValid(password)" class="input-error">
+                        <p>A password width at least 6 characters is required !!!!</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="confirm_password" class="label-form">Confirm password</label>
+                    <input id="confirm_password" name="confirm_password" type="password" autocomplete="password"
+                        required class="input-form" placeholder="Put the same password"
+                        [(ngModel)]="form.confirmPassword" #confirmPassword="ngModel" minlength="6">
+                    <div *ngIf="confirmPasswordIsNotValid(confirmPassword)" class="input-error">
+                        <p>The same password is required !!!!</p>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a class="text-blue-900 hover:text-blue-800 hover:underline" routerLink="/login">You
+                        have already an account ?
+                    </a>
+
+                </div>
+            </div>
+            <!--Second part of the form-->
+            <div>
+                <button type="submit" class="submit-form">
+                    {{buttonText}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-container *ngIf="alertIsDisplayed==true && registred==true">
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                <div
+                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div
+                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                                <!-- Heroicon name: outline/exclamation -->
+                                <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Congratulations
+                                </h3>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500">Your account is created with success</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                            (click)="closeAlert()">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+<ng-container *ngIf="alertIsDisplayed==true && registred==false">
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                <div
+                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div
+                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                <!-- Heroicon name: outline/exclamation -->
+                                <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Error
+                                </h3>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500">Please try submitting the form later !!!!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                            (click)="closeAlert()">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
